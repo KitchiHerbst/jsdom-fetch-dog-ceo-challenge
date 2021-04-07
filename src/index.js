@@ -25,12 +25,26 @@ const renderDogImage = (image_url) => {
     imageContainer.append(img)
 }
 
+const dogBreeds = (message) => {
+    // console.log(message[1][0])
+    for (let i = 0; i < message.length; i++){
+        const ul = document.getElementById('dog-breeds')
+        const li = document.createElement('li')
+        li.innerText = message[i][0]
+        ul.append(li)
+    }
+    // for(let object in message){
+    //     let breed = message[key]
+    //     console.log(breed)
+    // }
+
+}
+
 const fetchDogBreed = () => {
     fetch(breedUrl)
     .then(resp => resp.json())
     .then(breeds => {
-        breeds.message.forEach(breed => {
-           
-        })
+        const dogs = Object.entries(breeds.message)
+        dogBreeds(dogs)
     })
 }
